@@ -1,25 +1,16 @@
-import React from "react";
-import { View } from "react-native";
-import Card from "./components/Card";
+import { useState } from "react";
+import { ActivityIndicator, View } from "react-native";
+export default function Index() {
+  const [loading, setLoading] = useState(true);
+  const [redirectTo, setRedirectTo] = useState<"/home" | "/login">("/login");
 
-export default function App() {
-  return (
-    <View
-      style={{
-        padding: 20,
-        paddingTop: 50,
-        backgroundColor: "#eaeaea",
-      }}>
-      <Card
-        title={"Red jack cheap!"}
-        image={require("./assets/images/jacket.jpg")}
-        subTitle="$ 200"
-      />
-      <Card
-        title={"Couch cheap!"}
-        image={require("./assets/images/couch.jpg")}
-        subTitle="$ 50"
-      />
-    </View>
-  );
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+  return;
+  // <Redirect href={redirectTo} />;
 }
